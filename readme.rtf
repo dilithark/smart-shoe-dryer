@@ -1,0 +1,176 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2869
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # Smart Timer-Controlled Motor System with Keypad Input\
+\
+## Project Overview\
+\
+This project is a microcontroller-based smart timer system that allows users to control a motor for a custom duration using a 4x4 keypad interface. The system provides real-time feedback via an I2C LCD display and includes servo actuation and LED indicators for enhanced interaction.\
+\
+The motor acts as the main platform where **Peltier modules are directly fixed to the motor pins/assembly**, enabling controlled heating or cooling during operation. This makes the system suitable for temperature-based applications.\
+\
+---\
+\
+## Features\
+\
+* Custom time input using a 4x4 keypad\
+* Real-time countdown display on 16x2 LCD\
+* Motor control using H-bridge driver\
+* Integration of **Peltier modules for heating/cooling**\
+* Dual servo motor actuation\
+* Visual feedback using LED indicators\
+* Input validation and reset functionality\
+* Simple and user-friendly interface\
+\
+---\
+\
+## Components Used\
+\
+* Arduino (Uno / Nano / compatible board)\
+* 4x4 Matrix Keypad\
+* 16x2 LCD with I2C module\
+* Motor driver (L298N or similar)\
+* DC fans\
+* **Peltier Modules (Thermoelectric Coolers)**\
+* 2 \'d7 Servo Motors\
+* LEDs (2 \'d7 for status indication)\
+* Resistors (for LEDs)\
+* Power supply (5V / 12V depending on motor and Peltier requirements)\
+\
+---\
+\
+## Pin Configuration\
+\
+### Keypad\
+\
+* Rows 
+\f1 \uc0\u8594 
+\f0  A0, A1, A2, A3\
+* Columns 
+\f1 \uc0\u8594 
+\f0  A4, A5, D2, D3\
+\
+### Motor Driver\
+\
+* IN1 
+\f1 \uc0\u8594 
+\f0  D6\
+* IN2 
+\f1 \uc0\u8594 
+\f0  D7\
+* IN3 
+\f1 \uc0\u8594 
+\f0  D12\
+* IN4 
+\f1 \uc0\u8594 
+\f0  D13\
+\
+### Servos\
+\
+* Servo 1 
+\f1 \uc0\u8594 
+\f0  D8\
+* Servo 2 
+\f1 \uc0\u8594 
+\f0  D9\
+\
+### LEDs\
+\
+* Running LED 
+\f1 \uc0\u8594 
+\f0  D10\
+* Finished LED 
+\f1 \uc0\u8594 
+\f0  D11\
+\
+### LCD (I2C)\
+\
+* SDA 
+\f1 \uc0\u8594 
+\f0  A4\
+* SCL 
+\f1 \uc0\u8594 
+\f0  A5\
+\
+---\
+\
+## How It Works\
+\
+1. System starts and displays "Enter Time (min)" on LCD.\
+2. User inputs time using keypad (e.g., 15 for 15 minutes).\
+3. Press # to confirm input.\
+4. Motor starts running and:\
+\
+   * LCD shows countdown\
+   * Running LED turns ON\
+   * Servos move to active position\
+   * **Peltier modules operate along with the motor for thermal control**\
+5. When time ends:\
+\
+   * Motor stops\
+   * Peltier modules stop\
+   * Finished LED turns ON\
+   * Servos return to initial position\
+6. Press * anytime before starting to clear input.\
+\
+---\
+\
+## Keypad Controls\
+\
+| Key | Function              |\
+| --- | --------------------- |\
+| 0\'969 | Enter time in minutes |\
+| #   | Confirm and start     |\
+| *   | Clear input           |\
+\
+---\
+\
+## Software Requirements\
+\
+* Arduino IDE\
+* Required Libraries:\
+\
+  * Keypad.h\
+  * LiquidCrystal_I2C.h\
+  * VarSpeedServo.h\
+  * Wire.h\
+\
+---\
+\
+## Future Improvements\
+\
+* Add buzzer for completion alert\
+* Integrate MQTT communication for remote control\
+* Mobile app interface\
+* EEPROM storage for last used time\
+* Add temperature sensors for feedback control of Peltier modules\
+\
+---\
+\
+## Notes\
+\
+* Ensure proper power supply for motor and Peltier modules\
+* Peltier modules require adequate heat dissipation (heat sinks/fans)\
+* Do not power motor or Peltier modules directly from Arduino\
+* Use common ground for all components\
+* Check I2C address of LCD (commonly 0x27)\
+\
+---\
+\
+## Applications\
+\
+* Temperature-controlled systems\
+* Smart cooling/heating devices\
+* Automated lab experiments\
+* Robotics and embedded systems projects\
+\
+---\
+\
+## Author\
+\
+Developed as part of an embedded systems / robotics project.\
+}
